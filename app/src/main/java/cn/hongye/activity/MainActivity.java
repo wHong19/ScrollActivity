@@ -1,37 +1,59 @@
 package cn.hongye.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.ListActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import cn.hongye.view.RefreshListView;
 
+public class MainActivity extends ListActivity {
+    private RefreshListView listView;
+    String[] data={"张三","李四","王五","赵六","王旗","发放","发过","软卧","法尔"
+            ,"张三","李四","王五","赵六","王旗","发放","发过","软卧","法尔"
+            ,"张三","李四","王五","赵六","王旗","发放","发过","软卧","法尔"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        listView = (RefreshListView) getListView();
+        listView.setAdapter(new ListAdapter());
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+    class ListAdapter extends BaseAdapter{
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        @Override
+        public int getCount() {
+            return data.length;
         }
 
-        return super.onOptionsItemSelected(item);
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            TextView textView;
+            if (null==convertView){
+                textView=new TextView(MainActivity.this);
+                textView.setPadding(40,60,0,60);
+                convertView=textView;
+            }else {
+                textView= (TextView) convertView;
+            }
+            textView.setText(data[position]);
+            return convertView;
+        }
     }
+
 }
