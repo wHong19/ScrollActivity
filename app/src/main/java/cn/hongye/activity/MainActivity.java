@@ -1,4 +1,4 @@
-package cn.hongye.activity;
+﻿package cn.hongye.activity;
 
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import cn.hongye.view.RefreshListView;
 
 public class MainActivity extends ListActivity {
     private RefreshListView listView;
-    String[] data={"张三","李四","王五","赵六","王旗","发放","发过","软卧","法尔"
+    String[] data={"张si","李四","王五","赵六","王旗","发放","发过","软卧","法尔"
             ,"张三","李四","王五","赵六","王旗","发放","发过","软卧","法尔"
             ,"张三","李四","王五","赵六","王旗","发放","发过","软卧","法尔"};
     @Override
